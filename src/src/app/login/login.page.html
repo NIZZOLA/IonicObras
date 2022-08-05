@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Acesso ao sistema</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="text" [(ngModel)]="loginRequest.username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="loginRequest.password" name="password" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" (click)="login()">Entrar</ion-button>
+        <span color="danger">{{errorMessage}}</span>
+        <ion-button [routerLink]="['/forgot-password']" expand="block" color="danger">Esqueci a senha !</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

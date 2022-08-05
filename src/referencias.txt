@@ -1,0 +1,12 @@
+fonte: https://morioh.com/p/b3b61322dfb2
+
+ionic start ObraApp blank
+
+Criar páginas
+
+ionic generate page login
+ionic generate page registration
+ionic generate page forgot-password
+
+
+

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Gestão de Obras
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col *ngIf="username!=null">
+          <p>Usuário: {{username}}</p>
+          <p>Perfil: {{role}}</p>
+          <ion-button [routerLink]="['/login']" expand="block" color="danger">Logout</ion-button>
+          <p>Opções:</p>
+
+          <ion-button [routerLink]="['/clientes']" expand="block" color="primary">Clientes</ion-button>
+          <ion-button [routerLink]="['/empreendimentos']" expand="block" color="primary">Empreendimentos</ion-button>
+          
+      </ion-col>
+
+      <ion-col align-self-center *ngIf="username==null">
+        <ion-button [routerLink]="['/registration']" expand="block" color="primary">Cadastre-se</ion-button>
+
+        <span class="divider line one-line">ou</span>
+
+        <span class="already">Já está cadastrado ?</span>
+
+        <ion-button [routerLink]="['/login']" expand="block" color="danger">Login</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
