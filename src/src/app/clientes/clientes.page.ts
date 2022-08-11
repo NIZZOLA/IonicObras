@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiserviceService } from '../service/apiservice.service';
+import { ApiService } from '../service/apiservice.service';
 
 @Component({
   selector: 'app-clientes',
@@ -8,12 +8,11 @@ import { ApiserviceService } from '../service/apiservice.service';
 })
 export class ClientesPage implements OnInit {
   resultado : any = [];
-  constructor(private api: ApiserviceService) {
+  constructor(private api: ApiService) {
     this.CarregaDados();
    }
 
   ngOnInit() {
-
   }
 
   CarregaDados() {
