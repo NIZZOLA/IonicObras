@@ -25,15 +25,15 @@ export class LoginPage implements OnInit {
 
   login() {
     this.userService.login(this.loginRequest).subscribe(retorno => {
-      //console.log(retorno);  ve o retorno da api de autenticação
+      console.log(retorno);  //ve o retorno da api de autenticação
       if (retorno && retorno.token) {
-        console.log('login ok!');
+        //console.log('login ok!');
         this.storage.set("login", retorno);
         this.router.navigate(['/home']);
       } else {
         console.log('erro no login:' );
         this.errorMessage = retorno.message;
-        console.log( retorno);
+        //console.log( retorno);
       }
     })
   }
