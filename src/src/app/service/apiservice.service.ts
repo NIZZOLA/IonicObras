@@ -6,7 +6,7 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiserviceService {
+export class ApiService {
   token = "";
   constructor(private http: HttpClient,
               private storage: StorageService) {
@@ -34,13 +34,11 @@ export class ApiserviceService {
   }
   public async getClientes() {
     console.log('getclientes');
-    let url = SERVER_URL + "/employee";
+    let url = SERVER_URL + "/clientes";
     let token = await this.getToken();
     if(token != null) {
-
         return this.http.get(url,{headers : this.getHeaders(token) } ).toPromise();
     }
-    
     return null;
   }
 
