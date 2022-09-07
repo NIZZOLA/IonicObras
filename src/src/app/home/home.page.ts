@@ -20,8 +20,6 @@ export class HomePage {
 
   async loadStorage() {
     let taskJson = this.storage.get('login');
-    //console.log("Loading storage");
-    //console.log(taskJson);
     if (taskJson != null) {
       this.login = await taskJson;
       //console.log(this.login);
@@ -30,7 +28,9 @@ export class HomePage {
         this.role = this.login.user.role;
       } else {
         //console.log('não logado');
-        this.router.navigate(['login']);
+        //this.router.navigate(['login']);
+
+        this.username = "Teste";
       }
     }
   }

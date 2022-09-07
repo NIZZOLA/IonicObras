@@ -23,7 +23,11 @@ export class UserService {
     const url = `${SERVER_URL}/login`;
     var response = this.http.post<LoginResponse>(url, JSON.stringify(loginRequest), this.httpHeader)
       .pipe(
-        catchError(this.handleError<LoginResponse>('login error'))
+        //catchError(this.handleError<LoginResponse>('login error'))
+        catchError(err => {
+          console.log('Handling error locally and rethrowing it...', err);
+          return of (err);
+         })
       );
 
     //console.log(response);

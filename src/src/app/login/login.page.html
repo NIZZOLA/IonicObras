@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="primary" expand="block" (click)="login()">Entrar</ion-button>
-        <ion-span color="danger">{{errorMessage}}</ion-span>
+        <ion-label color="danger">{{errorMessage}}</ion-label>
         <ion-button [routerLink]="['/forgot-password']" expand="block" color="danger">Esqueci a senha !</ion-button>
       </ion-col>
     </ion-row>

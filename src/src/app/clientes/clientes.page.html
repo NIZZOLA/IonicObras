@@ -12,7 +12,7 @@
     <ion-item-sliding *ngFor="let cli of resultado">
       <ion-item href="#">
         <ion-label>
-          <h2>{{cli.nomeDoCliente}}</h2>
+          <h2>{{cli.nome}}</h2>
           <ion-label>Endereço:</ion-label><ion-label>{{cli.logradouro}} {{cli.numero}}</ion-label>
           
           <ion-label>Telefone:</ion-label><ion-icon name="call-outline"></ion-icon>
@@ -27,11 +27,18 @@
         <ion-item-option color="danger" (click)="openPageClientes(cli.id)">
           <ion-icon slot="icon-only" name="search"></ion-icon>
         </ion-item-option>
-        <ion-item-option  (click)="openPageEmpreendimentos(1)">
+        <ion-item-option  (click)="openPageEmpreendimentos(cli.id)">
           <ion-icon slot="icon-only" name="home"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   
+    <ion-item *ngIf="errorMessage!=''">
+      <ion-label color="danger">
+        {{errorMessage}}
+      </ion-label>
+      <ion-button color="danger" (click)="CarregaDados()">Recarregar</ion-button>
+    </ion-item>
+
      </ion-list>
 </ion-content>

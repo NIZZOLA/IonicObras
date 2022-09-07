@@ -16,3 +16,4 @@ export const environment = {
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 export const SERVER_URL = 'https://localhost:7282';
+//export const SERVER_URL = 'https://nizzolaobrasapi.azurewebsites.net';

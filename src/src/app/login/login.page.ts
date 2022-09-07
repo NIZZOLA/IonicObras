@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
         this.errorMessage = retorno.message;
         //console.log( retorno);
       }
-    })
+    }, (error) => { console.log("Catch error")})
   }
 
   forgotPwd() {

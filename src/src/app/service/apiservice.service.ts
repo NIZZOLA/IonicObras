@@ -11,8 +11,11 @@ export class ApiService {
   constructor(private http: HttpClient,
               private storage: StorageService) {
                }
-
+               
   private async getToken() {
+    return "1234";
+  }
+  private async getToken1() {
     let taskJson = this.storage.get('login');
     if (taskJson != null) {
       let login = await taskJson;
@@ -33,8 +36,9 @@ export class ApiService {
     });
   }
   public async getClientes() {
-    console.log('getclientes');
+    
     let url = SERVER_URL + "/clientes";
+    //console.log('getclientes de:'+ url);
     let token = await this.getToken();
     if(token != null) {
         return this.http.get(url,{headers : this.getHeaders(token) } ).toPromise();
@@ -59,5 +63,10 @@ export class ApiService {
     return this.http.get(url + id).toPromise();
   }
 
-  
+  getEmpreendimentoPorCliente(id) {
+    let url = SERVER_URL + '/empreendimentos/cliente/' + id;
+
+    return this.http.get(url + id).toPromise();
+  }
+
 }
