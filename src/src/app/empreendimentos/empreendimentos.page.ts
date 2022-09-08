@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { ApiService } from '../service/apiservice.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class EmpreendimentosPage implements OnInit {
   constructor(private api: ApiService,
               private navCtrl: NavController,
               private route: ActivatedRoute, 
-              private router: Router) {
+              private router: Router,
+              private loadingController: LoadingController) {
     
     this.route.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state) {
@@ -34,7 +35,25 @@ export class EmpreendimentosPage implements OnInit {
   ngOnInit() {
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Acessando base de dados',
+      duration: 2000
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+  }
+  
+  dismissLoader() {
+    this.loadingController.dismiss().then((response) => {
+      console.log('Loader closed!', response);
+    }).catch((err) => {
+      console.log('Error occured : ', err);
+    });
+  }
+
   CarregaDados() {
+    this.presentLoading();
       this.api.getEmpreendimentos()
         .then((json) => {
           console.log(json);
@@ -43,6 +62,7 @@ export class EmpreendimentosPage implements OnInit {
         .catch((erro) => {
           console.log("Erro ao carregar a requisição" + erro);
         });
+        this.dismissLoader();
     }
 
     CarregaDadosPorCliente(idCliente) {

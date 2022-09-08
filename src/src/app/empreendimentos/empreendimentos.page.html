@@ -18,6 +18,9 @@
           <p>Início:{{emp.dataInicio | date: 'dd/MM/YYYY'}} </p>
           <p>{{emp.cidade}}/{{emp.estado}}</p>
         </ion-label>
+        <ion-item-option color="danger" (click)="openPageEmpreendimento(emp.id)">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-item-option>
         <!--
         <ion-note slot="end">
           {{emp.id}}

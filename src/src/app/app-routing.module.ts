@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'empreendimento',
     loadChildren: () => import('./empreendimento/empreendimento.module').then( m => m.EmpreendimentoPageModule)
   },
+  {
+    path: 'foto',
+    loadChildren: () => import('./foto/foto.module').then( m => m.FotoPageModule)
+  },
+  {
+    path: 'conta',
+    loadChildren: () => import('./conta/conta.module').then( m => m.ContaPageModule)
+  },
 ];
 
 @NgModule({

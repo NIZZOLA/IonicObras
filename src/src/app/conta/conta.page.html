@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inclusão de nova conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-select placeholder="Tipo de despesa ou receita">
+        <ion-select-option *ngFor="let desp of tiposdespesasreceitas" [value]="desp">{{ desp.nome }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="Forma de pagamento">
+        <ion-select-option *ngFor="let forma of formasdepagamento" [value]="forma">{{ forma.nome }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

@@ -58,15 +58,42 @@ export class ApiService {
   }
 
   getEmpreendimento(id) {
-    let url = SERVER_URL + '/empreendimentos/?id=' + id;
+    let url = SERVER_URL + '/empreendimento/' + id;
     
-    return this.http.get(url + id).toPromise();
+    return this.http.get(url).toPromise();
   }
 
   getEmpreendimentoPorCliente(id) {
     let url = SERVER_URL + '/empreendimentos/cliente/' + id;
 
-    return this.http.get(url + id).toPromise();
+    return this.http.get(url).toPromise();
+  }
+
+  getFotos(idEmpreendimento) {
+    let url = SERVER_URL + '/fotos/' + idEmpreendimento;
+    
+    return this.http.get(url).toPromise();
+  }
+
+  getTiposDeDespesasEReceitas() {
+    let url = SERVER_URL + '/tipodedespesasereceitas';
+    return this.http.get(url ).toPromise();
+  }
+  
+  getFormaDePagamento() {
+    let url = SERVER_URL + '/formadepagamento';
+    return this.http.get(url ).toPromise();
+  }
+
+  postFoto(formData) {
+    let url = SERVER_URL + '/fotos';
+
+    return this.http.post(url, formData).subscribe( val => console.log(val));
+  }
+
+  postConta(conta) {
+    let url = SERVER_URL + '/contas';
+    return this.http.post(url,conta ).subscribe( val => console.log(val));
   }
 
 }

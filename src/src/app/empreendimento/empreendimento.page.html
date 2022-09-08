@@ -1,12 +1,88 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>empreendimento</ion-title>
+
+    <ion-title color="success">
+      <ion-icon name="business-outline" color="primary"></ion-icon>{{empreendimento?.nome}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-label *ngFor="let emp of resultado">
-      {{emp.nome}}
-    </ion-label>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{empreendimento?.cliente?.nome}}</ion-card-title>
+      <ion-card-subtitle>{{empreendimento?.nome}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      Rua:{{empreendimento?.logradouro}} Bairro: {{empreendimento?.bairro}} Cidade: {{empreendimento?.cidade}} / {{empreendimento?.estado}}
+    </ion-card-content>
+    <ion-card-content>
+      Início da obra: {{empreendimento?.dataInicio}}
+    </ion-card-content>
+    <ion-card-content>
+      Previsão de término: {{empreendimento?.dataPrevistaTermino}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Contas registradas</ion-card-title>
+      <ion-button color="success" (click)="NovaConta()">+ Adicionar</ion-button>
+      <ion-grid no-padding>
+
+        <ion-row>
+          <ion-col>Vencimento</ion-col>
+          <ion-col>Pagamento</ion-col>
+          <ion-col>Valor</ion-col>
+          <ion-col>Observações</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let cta of contas">
+          <ion-col>
+            {{cta.vencimento}}
+          </ion-col>
+          <ion-col>
+            {{cta.dataDoPagamento}}
+          </ion-col>
+          <ion-col>
+            {{cta.valor}}
+          </ion-col>
+          <ion-col>
+            {{cta.observacoes}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Fotos registradas</ion-card-title>
+      <ion-button color="success" (click)="NovaFoto()">+ Adicionar</ion-button>
+      <ion-grid no-padding>
+
+        <ion-row>
+          <ion-col>Descrição</ion-col>
+          <ion-col>Arquivo</ion-col>
+          <ion-col>Data</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let cta of fotos">
+          <ion-col>
+            {{cta.descricao}}
+          </ion-col>
+          <ion-col>
+            {{cta.nomeDoArquivo}}
+          </ion-col>
+          <ion-col>
+            {{cta.dataCriacao}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-header>
+  </ion-card>
+
 
 </ion-content>

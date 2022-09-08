@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Incluir nova foto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <form  method="post" enctype="multipart/form-data">
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Descricao</ion-label>
+      <ion-input type="text" name="descricao" value="{{descricao}}" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Arquivo</ion-label>
+      <ion-input type="file" name="arquivo" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Enviar</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+
+</ion-content>

@@ -4,14 +4,15 @@ import { NavController } from '@ionic/angular';
 import { ApiService } from '../service/apiservice.service';
 
 @Component({
-  selector: 'app-fotos',
-  templateUrl: './fotos.page.html',
-  styleUrls: ['./fotos.page.scss'],
+  selector: 'app-foto',
+  templateUrl: './foto.page.html',
+  styleUrls: ['./foto.page.scss'],
 })
-export class FotosPage implements OnInit {
+export class FotoPage implements OnInit {
 
   idEmpreendimento: string;
   empreendimento: any;
+  descricao: string;
 
   constructor(private api: ApiService,
               private navCtrl: NavController,
@@ -23,11 +24,10 @@ export class FotosPage implements OnInit {
       this.idEmpreendimento = this.router.getCurrentNavigation().extras.state.empreendimentoId;
           console.log("Id do empreendimento:" + this.idEmpreendimento);
           
-          //this.CarregaContasPorCliente(this.id);
+          this.CarregaEmpreendimento(this.idEmpreendimento);
     }
-  
   }
-  
+
   ngOnInit() {
   }
 
@@ -40,6 +40,21 @@ export class FotosPage implements OnInit {
     .catch((erro) => {
       console.log("Erro ao carregar a requisição" + erro);
     });
+  }
+
+
+  SubmitForm(fileChangeEvent) {
+    // Get a reference to the file that has just been added to the input
+    const photo = fileChangeEvent.target.files[0];
+    // Create a form data object using the FormData API
+    let formData = new FormData();
+    // Add the file that was just added to the form data
+    formData.append("arquivo", photo, photo.name);
+    formData.append("descricao", this.descricao );
+    formData.append("idEmpreendimento", this.idEmpreendimento);
+    
+    // POST formData to server using HttpClient
+    this.api.postFoto(formData);
   }
 
 }
