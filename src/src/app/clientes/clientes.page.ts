@@ -35,6 +35,8 @@ export class ClientesPage implements OnInit {
         console.log(erro);
         this.errorMessage = "Falhar ao comunicar-se com o serviço remoto";
       });
+      
+      this.dismissLoader();
   }
 
   openPageEmpreendimentos(idCliente: number) {
@@ -52,6 +54,15 @@ export class ClientesPage implements OnInit {
   });
   await loading.present();
   const { role, data } = await loading.onDidDismiss();
+}
+
+
+dismissLoader() {
+  this.loadingController.dismiss().then((response) => {
+    console.log('Loader closed!', response);
+  }).catch((err) => {
+    console.log('Error occured : ', err);
+  });
 }
 
 }

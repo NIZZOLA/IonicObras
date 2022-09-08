@@ -9,5 +9,4 @@ export class contaRequest {
        observacoes: string;
        tipoDeDespesaId: string;
        tipoDePagamentoId: string;
-   
 }

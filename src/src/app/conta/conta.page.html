@@ -8,6 +8,27 @@
 
   <ion-list>
 
+
+    <ion-item lines="full">
+      <ion-label>Vencimento</ion-label>
+      <ion-input type="date" [(ngModel)]="novaConta.vencimento" name="observacoes" ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Data da Compra</ion-label>
+      <ion-input type="date" [(ngModel)]="novaConta.dataDaCompra" name="observacoes" ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Data do Pagamento</ion-label>
+      <ion-input type="date"  [(ngModel)]="novaConta.dataDoPagamento" name="observacoes" ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Observações</ion-label>
+      <ion-input type="text" [(ngModel)]="novaConta.observacoes" name="observacoes" required></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-select placeholder="Tipo de despesa ou receita">
         <ion-select-option *ngFor="let desp of tiposdespesasreceitas" [value]="desp">{{ desp.nome }}</ion-select-option>
@@ -20,5 +41,5 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  
+
 </ion-content>

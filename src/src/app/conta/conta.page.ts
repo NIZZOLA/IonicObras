@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { ApiService } from '../service/apiservice.service';
+import { contaRequest} from '../models/contaRequest';
 
 @Component({
   selector: 'app-conta',
@@ -12,6 +13,9 @@ export class ContaPage implements OnInit {
 
   tiposdespesasreceitas: any;
   formasdepagamento : any;
+
+  novaConta: contaRequest = new contaRequest();
+  errorMessage: string = "";
 
   constructor(private api: ApiService,
     private navCtrl: NavController,
